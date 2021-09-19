@@ -9,7 +9,7 @@
 
 <body>
 <%
-    String login = request.getParameter("login");
+	String login = request.getParameter("login");
     String password = request.getParameter("password");
 	String repPassword = request.getParameter("repPassword");
 	String gender = request.getParameter("gender");
@@ -17,6 +17,10 @@
 	String comment = request.getParameter("comment");
 	String mailru = request.getParameter("mailru");
     boolean showForm = true;
+	
+	if (login.matches("^[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\\.[a-zA-Z]{2,4}") = false) {
+		out.write("Enter valid email adress!");
+	}
     if (login != null) {
         if ("none@none.net".equals(login) && "123".equals(password) && "123".equals(repPassword)) {
             showForm = false;
@@ -51,7 +55,7 @@ Enter your login and password.<br/><br/>
 <form action = 'index.jsp' method='post'>
 	<tr><td align = 'right'>Email:</td> <td ><input type = 'email' name = 'login'/></td></tr>
 	<tr><td align = 'right'>Passwod:</td> <td><input type = 'password' name = 'password'/></td></tr>
-	<tr><td align = 'right'>Repeat passwod:</td> <td ><input type = 'repPassword' name = 'repPassword'/></td></tr>
+	<tr><td align = 'right'>Repeat passwod:</td> <td ><input type = 'password' name = 'repPassword'/></td></tr>
 	<tr><td align = 'right'>Gender:</td> <td >M<input type = 'radio' name = 'gender' value = 'M'/>F<input type = 'radio' name = 'gender' value = 'F'/></td></tr>
 	<tr><td align = 'right'>Region:</td> <td ><select name = 'region'>
 		<option value = 'uga'>Uganda</option>
